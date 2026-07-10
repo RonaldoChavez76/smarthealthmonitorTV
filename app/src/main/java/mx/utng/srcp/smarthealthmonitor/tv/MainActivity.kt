@@ -3,14 +3,13 @@ package mx.utng.srcp.smarthealthmonitor.tv
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.tv.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.ExperimentalTvMaterial3Api
+import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
+import mx.utng.srcp.smarthealthmonitor.tv.presentation.TvCatalogScreen
 import mx.utng.srcp.smarthealthmonitor.tv.ui.theme.SmarthealthmonitorTvTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +19,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             SmarthealthmonitorTvTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    shape = RectangleShape
+                    shape = MaterialTheme.shapes.medium
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "catalog") {
+                        composable("catalog") {
+                            TvCatalogScreen()
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SmarthealthmonitorTvTheme {
-        Greeting("Android")
     }
 }
