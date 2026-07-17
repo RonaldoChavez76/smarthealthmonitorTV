@@ -24,7 +24,7 @@ class TvViewModelFactory(private val context: Context) : ViewModelProvider.Facto
                     )
                 )
             }
-            return TvViewModel(mockRepository) as T
+            return TvViewModel(mockRepository, context) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
