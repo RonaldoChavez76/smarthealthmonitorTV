@@ -15,5 +15,8 @@ class SmartHealthApplication : Application() {
         //     fcFlow = SmartHealthRepository.fcFlow
         // )
         // mqttService.connect()
+        
+        // Programar sync periódico con Neon
+        mx.utng.smarthealthmonitor.data.sync.NeonSyncWorker.schedule(this)
     }
 }
