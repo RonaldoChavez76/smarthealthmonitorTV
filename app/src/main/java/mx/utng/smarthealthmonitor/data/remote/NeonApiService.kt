@@ -25,7 +25,18 @@ data class LecturaFcDto(
     val hora : String,
     val fecha : String = "",
     val created_at : String = "",
-)
+) {
+    fun toLecturaFC(): mx.utng.smarthealthmonitor.domain.model.LecturaFC {
+        return mx.utng.smarthealthmonitor.domain.model.LecturaFC(
+            id = id,
+            bpm = bpm,
+            estado = estado,
+            dispositivo = dispositivo,
+            hora = hora,
+            sincronizado = true
+        )
+    }
+}
 
 /** Interfaz Retrofit para la Neon HTTP API */
 interface NeonApiService {
